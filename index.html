@@ -637,9 +637,7 @@
   </div>
 
   <script>
-    /* ════════════════════════════════
-       TRANSLATIONS
-    ════════════════════════════════ */
+
     var T = {
       en: {
         hero_lines: ['Learn', 'about me'],
@@ -779,9 +777,7 @@
       }
     };
 
-    /* ════════════════════════════════
-       STATE
-    ════════════════════════════════ */
+
     var currentLang = 'en';
     var heroLangIdx = 0;
     var heroOrder   = ['en', 'jp', 'ua', 'cs'];
@@ -789,11 +785,6 @@
     var heroEl  = document.getElementById('heroText');
     var labelEl = document.getElementById('langLabel');
 
-    /* ════════════════════════════════
-       HERO-ONLY ANIMATION
-       (cycles automatically, independent
-        of the site language)
-    ════════════════════════════════ */
     function animateHeroTo(langCode) {
       var t = T[langCode];
       heroEl.classList.add('switching');
@@ -819,10 +810,6 @@
       }, 3200);
     }
 
-    /* ════════════════════════════════
-       FULL SITE TRANSLATION
-       (only on button click)
-    ════════════════════════════════ */
     function applySiteLang(langCode, animate) {
       currentLang = langCode;
       var t = T[langCode];
@@ -866,12 +853,6 @@
       }, animate ? 300 : 0);
     }
 
-    /* ════════════════════════════════
-       MANUAL BUTTONS
-       → translate full site
-       → hero auto-cycle restarts from
-         the selected language
-    ════════════════════════════════ */
     document.querySelectorAll('.lang-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var code = btn.dataset.lang;
@@ -880,9 +861,6 @@
       });
     });
 
-    /* ════════════════════════════════
-       CURSOR
-    ════════════════════════════════ */
     var cur = document.getElementById('cursor');
     document.addEventListener('mousemove', function(e) {
       cur.style.left = e.clientX + 'px';
@@ -896,9 +874,6 @@
     }
     addCursorHover('a, button, .artwork-card, .concept-row');
 
-    /* ════════════════════════════════
-       NAVIGATION
-    ════════════════════════════════ */
     function showPage(name) {
       document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
       var pg = document.getElementById('page-' + name);
@@ -917,16 +892,10 @@
       });
     });
 
-    /* ════════════════════════════════
-       SCROLL ARROW
-    ════════════════════════════════ */
     document.getElementById('scrollArrow').addEventListener('click', function() {
       document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
     });
 
-    /* ════════════════════════════════
-       SCROLL REVEAL
-    ════════════════════════════════ */
     function initReveal() {
       var els = document.querySelectorAll('.page.active .reveal:not(.visible)');
       if (!els.length) return;
@@ -939,9 +908,6 @@
     }
     initReveal();
 
-    /* ════════════════════════════════
-       INIT
-    ════════════════════════════════ */
     applySiteLang('en', false);
     startHeroCycle();
   </script>
